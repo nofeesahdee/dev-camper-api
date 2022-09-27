@@ -1,14 +1,19 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const bootcamps = require('./routes/bootcamps');
+const morgan = require('morgan')
+const connectDB = require('./config/db')
 
-// dotenv.config({ path: './config/config.env '})
 const app = express();
+dotenv.config({ path: './config/config.env'})
+const PORT = process.env.PORT || 3000;
 
-const PORT = 3000
+// dev logging middleware
+if (process.env.NODE_ENV === 'development'){
+    app.use(morgan('dev'))
+}
 
-app.get('/', (req,res) =>{
-    res.send('Hello from express')
-})
+connectDB()
 
 app.listen(
     PORT, 
