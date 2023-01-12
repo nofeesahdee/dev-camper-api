@@ -3,7 +3,7 @@ const router = express.Router();
 const {
     getBootcamps,
     getBootcamp,
-    createBootcamps,
+    createBootcamp,
     updateBootcamp,
     deleteBootcamp
 } = require('../controllers/bootcamps')
@@ -11,7 +11,7 @@ const {
 router
     .route('/')
     .get(getBootcamps)
-    .post(createBootcamps)
+    .post(createBootcamp)
 
 router
     .route('/:id')
